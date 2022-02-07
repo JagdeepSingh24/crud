@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head> </head>
+
+<body>
+	<div id="add1">
+		<form id="form" method="post" enctype="multipart/form-data" >
+			<input type="text" name="first_name" placeholder="First Name"><br>
+
+			<input type="text" name="last_name" placeholder="Last Name"><br>
+
+			<input type="text" name="email" placeholder="Email"><br>
+
+			<input type="file" name="Photos" id="Photos" placeholder="Image"><br>
+
+			<input type="submit" name="submit">
+		</form>
+	</div>
+	<div id="show"></div>
+	<script>
+		document.getElementById('form').addEventListener('submit', function (e) {
+			e.preventDefault();
+			let formData = new FormData(this);
+			addRecord(formData);
+		});
+		function addRecord(parsedData) {
+			const URL = 'http://localhost/jagdeep2/ajaxPractice/crud/add.php';
+			let xhttp = new XMLHttpRequest();
+			xhttp.open("POST", URL, true);
+			xhttp.onreadystatechange = function () {
+				if (this.readyState == 4 && this.status >= 200) {
+
+				}
+			};
+			xhttp.send(parsedData);
+		}
+	</script>
+</body>
+
+</html>
